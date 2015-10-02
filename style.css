@@ -25,10 +25,19 @@ body {
 	margin: 2px;
 }
 
-.name {
+.name,.nameEntry {
 	width: 200px;
 	display: inline-block;
 	text-align: center;
+}
+
+textarea
+{
+	font-family: 'pressStart';
+    background: transparent;
+    border: none;
+	color: white;
+	resize: none;
 }
 
 .name:hover {

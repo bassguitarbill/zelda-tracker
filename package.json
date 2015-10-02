@@ -1,0 +1,11 @@
+{
+  "name": "zelda-tracker",
+  "version": "0.0.1",
+  "main": "zelda.html",
+  "window": {
+    "frame": false,
+    "toolbar": false,
+	"width": 756,
+	"height": 80
+  }
+}
