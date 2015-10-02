@@ -97,6 +97,7 @@ function appendItem(row, itemName) {
 }
 
 function cacheImages() {
+	new Image().src = "images/blue-candle.png";
 	new Image().src = "images/magic-sword.png";
 	new Image().src = "images/bow.png";
 	new Image().src = "images/raft.png";
