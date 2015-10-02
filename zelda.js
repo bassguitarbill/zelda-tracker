@@ -36,7 +36,7 @@ function addClickHandlers(){
 	$(".name").off("click");
 	$(".name").click(function(ev){
 		$(ev.target.parentNode).remove();
-		win.resizeBy(0, -45);
+		win.resizeBy(0, -44);
 	});
 	
 	$(".item").off("click");
@@ -53,7 +53,7 @@ function addClickHandlers(){
 		var name = $("#newRowName").val();
 		makeRaceRow(name);
 		$("#newRowName").val("");
-		win.resizeBy(0, 45);
+		win.resizeBy(0, 44);
 	});
 };
 
