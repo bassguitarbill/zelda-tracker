@@ -1,0 +1,24 @@
+@font-face {
+  font-family: 'pressStart';
+  src: url('fonts/prstart.ttf'); /* IE9 Compat Modes */
+}
+
+body {
+	font-family: 'pressStart';
+	color: #FFF;
+	background-color: #000;
+} 
+
+.number,.triforce {
+	width: 30px;
+	display: inline-block;
+	text-align: center;
+	/*padding-top: 5px;*/
+	margin: 2px;
+}
+
+.name {
+	width: 100px;
+	display: inline-block;
+	text-align: center;
+}
