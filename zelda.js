@@ -11,7 +11,12 @@ if(typeof require != 'undefined'){
 	}
 }
 
-$(document).ready(addClickHandlers);
+$(document).ready(function(){
+	addClickHandlers();
+	cacheImages();
+});
+
+cacheImages();
 
 function addClickHandlers(){
 
@@ -20,7 +25,7 @@ function addClickHandlers(){
 		if(ev.toElement.src.includes("triforce-hover.png")){
 			ev.toElement.src = "images/triforce.png";
 		} else {
-			ev.toElement.src = "images/empty.png";
+			ev.toElement.src = "images/triforce-hover.png";
 		}	
 	});
 	$(".triforce").mouseenter(function(ev){
@@ -89,4 +94,23 @@ function appendItem(row, itemName) {
 			.attr('src','images/' + itemName + '-off.png'));
 	$(row).append(itemSpan);
 	
+}
+
+function cacheImages() {
+	new Image().src = "images/magic-sword.png";
+	new Image().src = "images/bow.png";
+	new Image().src = "images/raft.png";
+	new Image().src = "images/ladder.png";
+	new Image().src = "images/flute.png";
+	new Image().src = "images/silver-arrow.png";
+	new Image().src = "images/blue-candle-off.png";
+	new Image().src = "images/magic-sword-off.png";
+	new Image().src = "images/bow-off.png";
+	new Image().src = "images/raft-off.png";
+	new Image().src = "images/ladder-off.png";
+	new Image().src = "images/flute-off.png";
+	new Image().src = "images/silver-arrow-off.png";
+	new Image().src = "images/triforce.png";
+	new Image().src = "images/triforce-hover.png";
+	new Image().src = "images/empty.png";
 }
