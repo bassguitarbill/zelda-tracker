@@ -1,5 +1,29 @@
 var DEFAULT_NAME = 'LUNK';
 
+var STATES = {
+	sword:	['none', 'wooden', 'white', 'magical'],
+	arrow: 	['none', 'wooden', 'silver'],
+	candle:	['none', 'blue', 'red'],
+	potion:	['none', 'red', 'blue'],
+	bow:	['none', ''],
+	flute:	['none', ''],
+	ladder:	['none', ''],
+	raft:	['none', '']
+}
+
+function getNextState(imageURL) {
+	var matcher = /images\/(.*)\.png/;
+	var imageDesignation = matcher.exec(imageURL)[1];
+	var imgNameAndState = imageDesignation.split('-');
+	var itemName = imgNameAndState[0];
+	var currState = imgNameAndState[1] || '';
+	var states = STATES[itemName];
+	var currIndex = states.indexOf(currState);
+	var nextState = states[(currIndex + 1) % states.length];
+	var nextItemAndState = itemName + (nextState ? ("-" + nextState) : "");
+	return imageURL.replace(imageDesignation, nextItemAndState);
+}
+
 var gui, win;
 if(typeof require != 'undefined'){
 	gui = require('nw.gui');
@@ -15,8 +39,6 @@ $(document).ready(function(){
 	addClickHandlers();
 	cacheImages();
 });
-
-cacheImages();
 
 function addClickHandlers(){
 
@@ -46,11 +68,7 @@ function addClickHandlers(){
 	
 	$(".item").off("click");
 	$(".item").click(function(ev){
-		if(ev.toElement.src.includes("-off.png")){
-			ev.toElement.src = ev.toElement.src.replace("-off.png",".png");
-		} else {
-			ev.toElement.src = ev.toElement.src.replace(".png","-off.png");
-		}
+		ev.toElement.src = getNextState(ev.toElement.src);
 	});
 	
 	$("#addRowButton").off("click");
@@ -76,13 +94,14 @@ function makeRaceRow(name) {
 			.attr('src','images/empty.png'));
 		$(row).append(triforce);
 	}
-	appendItem(row, "blue-candle");
-	appendItem(row, "magic-sword");
+	appendItem(row, "candle");
 	appendItem(row, "bow");
 	appendItem(row, "raft");
 	appendItem(row, "ladder");
 	appendItem(row, "flute");
-	appendItem(row, "silver-arrow");
+	appendItem(row, "arrow");
+	appendItem(row, "potion");
+	appendItem(row, "sword");
 	addClickHandlers();
 }
 
@@ -91,27 +110,29 @@ function appendItem(row, itemName) {
 	$(itemSpan).addClass(itemName)
 		.addClass('item')
 		.append($(document.createElement('img'))
-			.attr('src','images/' + itemName + '-off.png'));
+			.attr('src','images/' + itemName + '-none.png'));
 	$(row).append(itemSpan);
 	
 }
 
 function cacheImages() {
-	new Image().src = "images/blue-candle.png";
-	new Image().src = "images/magic-sword.png";
+	new Image().src = "images/arrow-none.png";
+	new Image().src = "images/arrow-silver.png";
 	new Image().src = "images/bow.png";
-	new Image().src = "images/raft.png";
-	new Image().src = "images/ladder.png";
+	new Image().src = "images/bow-none.png";
+	new Image().src = "images/candle-blue.png";
+	new Image().src = "images/candle-none.png";
+	new Image().src = "images/empty.png";
 	new Image().src = "images/flute.png";
-	new Image().src = "images/silver-arrow.png";
-	new Image().src = "images/blue-candle-off.png";
-	new Image().src = "images/magic-sword-off.png";
-	new Image().src = "images/bow-off.png";
-	new Image().src = "images/raft-off.png";
-	new Image().src = "images/ladder-off.png";
-	new Image().src = "images/flute-off.png";
-	new Image().src = "images/silver-arrow-off.png";
+	new Image().src = "images/flute-none.png";
+	new Image().src = "images/ladder.png";
+	new Image().src = "images/ladder-none.png";
+	new Image().src = "images/sword-none.png";
+	new Image().src = "images/sword-wooden.png";
+	new Image().src = "images/sword-white.png";
+	new Image().src = "images/sword-magical.png";
+	new Image().src = "images/raft.png";
+	new Image().src = "images/raft-none.png";
 	new Image().src = "images/triforce.png";
 	new Image().src = "images/triforce-hover.png";
-	new Image().src = "images/empty.png";
 }

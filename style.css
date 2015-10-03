@@ -48,3 +48,7 @@ textarea
 	width: auto;
 	text-align: center;
 }
+
+#addRowButton {
+	cursor: pointer;
+}
