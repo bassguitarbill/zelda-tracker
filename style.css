@@ -52,3 +52,26 @@ textarea
 #addRowButton {
 	cursor: pointer;
 }
+
+.index {
+	margin: auto;
+	margin-top: 100px;
+	width: 50%;
+}
+
+.footer {
+	font-size: 0.75em;
+	color: #AAA;
+	text-align: center;
+	border-top: dotted 2px #AAA;
+	width: 50%;
+	margin: auto;
+}
+
+a {
+	color: #FF0;
+}
+
+a:visited{
+	color: #FC0;
+}
