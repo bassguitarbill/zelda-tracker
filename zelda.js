@@ -118,15 +118,20 @@ function appendItem(row, itemName) {
 function cacheImages() {
 	new Image().src = "images/arrow-none.png";
 	new Image().src = "images/arrow-silver.png";
+	new Image().src = "images/arrow-wooden.png";
 	new Image().src = "images/bow.png";
 	new Image().src = "images/bow-none.png";
 	new Image().src = "images/candle-blue.png";
 	new Image().src = "images/candle-none.png";
+	new Image().src = "images/candle-red.png";
 	new Image().src = "images/empty.png";
 	new Image().src = "images/flute.png";
 	new Image().src = "images/flute-none.png";
 	new Image().src = "images/ladder.png";
 	new Image().src = "images/ladder-none.png";
+	new Image().src = "images/potion-blue.png";
+	new Image().src = "images/potion-none.png";
+	new Image().src = "images/potion-red.png";
 	new Image().src = "images/sword-none.png";
 	new Image().src = "images/sword-wooden.png";
 	new Image().src = "images/sword-white.png";
