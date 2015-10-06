@@ -36,6 +36,7 @@ if(typeof require != 'undefined'){
 }
 
 $(document).ready(function(){
+	makeTriforceSVG()
 	addClickHandlers();
 	cacheImages();
 });
@@ -43,21 +44,15 @@ $(document).ready(function(){
 function addClickHandlers(){
 
 	$(".triforce").off("click");
+	$("path").off("click");
 	$(".triforce").click(function(ev){
-		if(ev.toElement.src.includes("triforce-hover.png")){
-			ev.toElement.src = "images/triforce.png";
+		var el = (ev.toElement.tagName == "path") ? $(ev.toElement.parentNode) : $(ev.toElement);
+		// Fuck, dude. JQuery can't manipulate SVG classes for some fucking reason.
+		if(el.attr('class').includes("inactive")){
+			el.attr('class', 'triforce');
 		} else {
-			ev.toElement.src = "images/triforce-hover.png";
-		}	
-	});
-	$(".triforce").mouseenter(function(ev){
-		if(ev.toElement.src.includes("empty.png")){
-			ev.toElement.src = "images/triforce-hover.png";
-		} 	
-	}).mouseleave(function(ev){
-		if(ev.target.src.includes("triforce-hover.png")){
-			ev.target.src = "images/empty.png";
-		} 	
+			el.attr('class', 'triforce inactive');
+		}
 	});
 	
 	$(".name").off("click");
@@ -88,11 +83,7 @@ function makeRaceRow(name) {
 	$(nameElement).text(name || DEFAULT_NAME);
 	$(row).append(nameElement);
 	for(var i=0; i<8; i++){
-		var triforce = document.createElement('span');
-		$(triforce).addClass('triforce')
-			.append($(document.createElement('img'))
-			.attr('src','images/empty.png'));
-		$(row).append(triforce);
+		$(row).append(makeTriforceSVG());
 	}
 	appendItem(row, "candle");
 	appendItem(row, "bow");
@@ -140,4 +131,9 @@ function cacheImages() {
 	new Image().src = "images/raft-none.png";
 	new Image().src = "images/triforce.png";
 	new Image().src = "images/triforce-hover.png";
+}
+
+function makeTriforceSVG() {
+	return $('<svg class="triforce inactive" width="30px" height="30px" viewBox="0 0 12 12"><path d="M 0 12 v -2 h 1 v -2 h 1 v -2 h 1 v -2 h 1'
+	+ 'v -2 h 2 v 2 h 1 v 2 h 1 v 2 h 1 v 2 h 1 v 2 z" fill="white"/></svg>');
 }

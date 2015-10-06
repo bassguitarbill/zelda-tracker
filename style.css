@@ -25,6 +25,18 @@ body {
 	margin: 2px;
 }
 
+.triforce>path {
+	fill: #ffa044;
+}
+
+.triforce.inactive>path {
+	fill: none;
+}
+
+.triforce.inactive:hover>path {
+	fill: #6888ff;
+}
+
 .name,.nameEntry {
 	width: 200px;
 	display: inline-block;
